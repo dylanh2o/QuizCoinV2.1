@@ -24,10 +24,14 @@ const appSlice = createSlice({
   initialState: {
     loading: true,
     user: null,
+    account: ''
   },
   reducers: {
     toggleLoading: (state, action) => {
       state.loading = action.payload;
+    },
+    setAccount: (state, action) => {
+      state.account = action.payload;
     }
   },
 extraReducers: {
@@ -56,5 +60,5 @@ extraReducers: {
   },
 }
 });
-export const {toggleLoading} = appSlice.actions;
+export const {toggleLoading,setAccount} = appSlice.actions;
 export default appSlice.reducer;

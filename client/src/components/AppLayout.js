@@ -5,7 +5,7 @@ import { Route,Switch} from "react-router-dom";
 
 const AppLayout = () => (
   <>
-    <Nav  />
+    <Nav />
         <Switch>
           <Route path="/">
             <Home />

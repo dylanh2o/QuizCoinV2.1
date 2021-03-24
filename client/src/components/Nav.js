@@ -7,6 +7,7 @@ import Identicon from 'identicon.js';
 
 const Nav = () => {
   const dispatch = useDispatch();
+  const {account}=useSelector(state=>state.app);
   const dataProfil = useSelector(state => state.app.user);
   const fullName = dataProfil.name + ', ' + dataProfil.lastname;
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -45,7 +46,7 @@ const Nav = () => {
     cursor: "pointer"
   };
 
-
+console.log(account);
   return (
     <div style={container}>
       <div style={logo}>
@@ -54,18 +55,18 @@ const Nav = () => {
       <div onClick={showModal} style={profil}>
         <UserOutlined style={{fontSize: '8vh', color: 'white'}}/>
         {dataProfil.name}
-        {
-          console.log(this)
-          /*this.props.account
-          ? <img
-            width='30'
-            height='30'
-            alt="identicon"
-            src={`data:image/png;base64,${new Identicon(this.props.account, 30).toString()}`}
-          />
-          : <span></span>
-        */}
-      </div>
+        {account ? (
+          <>
+            <img
+              width='30'
+              height='30'
+              alt="identicon"
+              src={`data:image/png;base64,${new Identicon(account, 30).toString()}`}
+            />
+          {account}
+          </>
+          ) : null}
+              </div>
 
 
       <Modal
