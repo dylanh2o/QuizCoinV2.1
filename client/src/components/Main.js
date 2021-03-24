@@ -223,13 +223,15 @@ class Main extends Component {
         </Collapse>,
 
 
-
+        <h2>Questionnaire disponible</h2>
         {this.props.quizzes.map((quiz, key) => {
 
           return (
 
+
+
             <div key={key}     style={form}>
-              <h2>Questionnaire disponible</h2>
+            <h2>Questionnaire {key+1}</h2>
               <div >
                 <img
 
