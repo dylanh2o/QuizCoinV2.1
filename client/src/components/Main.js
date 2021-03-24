@@ -44,6 +44,13 @@ class Main extends Component {
       weight: '100vw',
       padding: '20px',
       alignItems: 'center',
+    };
+    const formQuestion = {
+      weight: '100vw',
+      padding: '20px',
+      alignItems: 'center',
+      border: "solid 1px black",
+      margin: "5px",
 
     };
     const formInput = {
@@ -230,7 +237,7 @@ class Main extends Component {
 
 
 
-            <div key={key}     style={form}>
+            <div key={key}     style={formQuestion}>
             <h2>Questionnaire {key+1}</h2>
               <div >
                 <img
