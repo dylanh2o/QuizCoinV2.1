@@ -56,7 +56,6 @@ const Nav = () => {
     height:'4vh'
   };
 
-  console.log(account);
   return (
     <div style={container}>
       <div style={logo}>

@@ -20,6 +20,7 @@ const LoginRegister = () => {
       ) : (
           <Register/>
       )}
+
   {form === 'Login' ? (
 <div style={change}>
   Pas de compte ? ->

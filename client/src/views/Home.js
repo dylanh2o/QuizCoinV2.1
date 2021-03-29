@@ -98,7 +98,7 @@ const Home = () => {
 
     }
   };
-  console.log(quizzes);
+
   return (
 
     <div>
@@ -118,3 +118,4 @@ const Home = () => {
 
 
 export default Home;
+

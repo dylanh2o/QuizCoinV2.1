@@ -58,6 +58,13 @@ contract QuizCoin {
         );
         _;
     }
+
+
+
+
+
+
+
     //create quiz
     function createQuiz( uint _endQuizDate, string memory _question, string memory _goodChoice, string memory _choice2, string memory _choice3) public {
         //make sure data exists
@@ -82,7 +89,10 @@ contract QuizCoin {
         //trigger an event
         emit QuizCreated(quizCount,  _endQuizDate, _question, _goodChoice, _choice2, _choice3, block.timestamp, msg.sender);
 
+
+
     }
+
 
     modifier notAnswered() {
         require(!answered[msg.sender], "Vous avez déjà répondu");
@@ -94,7 +104,7 @@ contract QuizCoin {
         require(_id > 0 && _id <= quizCount);
         //fetch the quiz
         Quiz memory _quiz = quizzes[_id];
-        require(block.timestamp - begin < _quiz.endQuizDate, "Le questionnaire  n'est pas encore fini");
+        require(block.timestamp - begin < _quiz.endQuizDate, "Le questionnaire n'est pas encore fini");
         _;
     }
 
@@ -130,31 +140,6 @@ contract QuizCoin {
         selfdestruct(owner);
     }
 }
-
-//Données brut
-// question[1] = "Prenom du créateur";
-//   question[2] = "Nom du créateur";
-//  question[3] = "Age du créateur";
-
-//  answer[1] = ["Ivane", "Dylan", "Marc", "Kevin"];
-//  answer[2] = ["Carluccio", "Santamaria", "Torres", "Rodrigues"];
-//   answer[3] = ["22", "23", "24", "25"];
-
-//   goodChoice[2] = "Dylan";
-//   goodChoice[2] = "Carluccio";
-//   goodChoice[3] = "25";
-
-//Contrat v0.1
-//Recevoir les données(en brut pour la v0.1)
-//question et ses 4 reponses
-//nombre de participants
-//date limite
-//somme a gagner si tous correcte(owner met la somme fois nombre de particpants- 10.- et 5 participants = 50.-)
-//fee pour cree le contrat
-//Creation du quiz
-//Fin du temps si tous juste envoyer la recompense aux gagnants
-//Fin du quiz retour du cash a l owner
-
 
 
 

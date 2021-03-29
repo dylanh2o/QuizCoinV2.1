@@ -11,10 +11,10 @@ const Register = () => {
   const [password2, setPassword2] = useState('');
 
   const [result, setResult] = useState(null);
-
+const professor = false;
   const handleSubmit = async() => {
 try{
-  const result = await feathersAPI.service('users').create({name, lastname, email, password});
+  const result = await feathersAPI.service('users').create({name, lastname, email, password,professor});
   setResult(result);
   console.log(result);
 }catch(error){

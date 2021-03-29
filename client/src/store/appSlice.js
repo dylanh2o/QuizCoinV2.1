@@ -49,7 +49,6 @@ extraReducers: {
   },
   [authenticateUser.fulfilled]: (state, action) => {
     state.user = action.payload.user;
-    console.log(action);
     state.loading = false;
   },
   [authenticateUser.rejected]: state=> {

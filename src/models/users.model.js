@@ -10,6 +10,7 @@ module.exports = function (app) {
     lastname: { type: String },
     email: { type: String, unique: true, lowercase: true },
     password: { type: String },
+    professor:{ type: Boolean },
 
 
   }, {
