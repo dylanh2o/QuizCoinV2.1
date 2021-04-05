@@ -142,7 +142,16 @@ let passQuiz=0;
           style={inputChoice}
           name={quiz.idQuiz}
           onClick={(event) => {
+            if(quiz.goodChoice===(event.target.value)){
+              let winAmount = window.web3.utils.toWei('0.1', 'Ether');
+              sendChoice(event.target.name, event.target.value, winAmount);
+            }else{
+
+              alert('faux');
+            }
+
           }}
+          value={arrayChoice[0]}
         >
           {arrayChoice[0]}
         </button>
@@ -151,7 +160,15 @@ let passQuiz=0;
           style={inputChoice}
           name={quiz.idQuiz}
           onClick={(event) => {
+            if(quiz.goodChoice === event.target.value){
+              let winAmount = window.web3.utils.toWei('0.1', 'Ether');
+              sendChoice(event.target.name, event.target.value, winAmount);
+            }else{
+              alert('faux');
+
+            }
           }}
+          value={arrayChoice[1]}
         >
           {arrayChoice[1]}
         </button>
@@ -161,9 +178,14 @@ let passQuiz=0;
           name={quiz.idQuiz}
           value={arrayChoice[2]}
           onClick={(event) => {
-            let winAmount = window.web3.utils.toWei('0.1', 'Ether');
-            sendChoice(event.target.name, event.target.value, winAmount);
+            if(quiz.goodChoice === event.target.value){
+              let winAmount = window.web3.utils.toWei('0.1', 'Ether');
+              sendChoice(event.target.name, event.target.value, winAmount);
+            }else{
+              alert('faux');
+            }
           }}
+          value={arrayChoice[2]}
         >
           {arrayChoice[2]}
         </button>
