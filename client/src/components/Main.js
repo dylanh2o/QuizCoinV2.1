@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import Identicon from 'identicon.js';
-import {Button, Collapse, Form, Input} from 'antd';
 import CreateQuiz from './CreateQuiz';
 import {useSelector} from 'react-redux';
 
 
-const {Panel} = Collapse;
-
 const Main = ({quizzes,createQuiz,sendChoice}) => {
   const dataProfil = useSelector(state => state.app.user);
+  const {account} = useSelector(state => state.app);
  const professor = dataProfil.professor;
   console.log(dataProfil);
 
@@ -43,7 +41,7 @@ const Main = ({quizzes,createQuiz,sendChoice}) => {
     return time;
   };
 
-
+let passQuiz=0;
     let arrayChoice;
     let time;
 
@@ -113,62 +111,70 @@ const Main = ({quizzes,createQuiz,sendChoice}) => {
           {quizzes.map((quiz, key) => {
 
             return (
+<div>
+  {quiz.author != account ? (
+    <div key={key} style={formQuestion}>
 
 
-              <div key={key} style={formQuestion}>
-                <h2>Questionnaire {key + 1}</h2>
-                <div>
-                  <img
+      <h2>Questionnaire {key + 1 -passQuiz}</h2>
+      <div>
+        <img
 
-                    width='30'
-                    height='30'
-                    alt="identicon"
-                    src={`data:image/png;base64,${new Identicon(quiz.author, 30).toString()}`}
-                  />
-                </div>
+          width='30'
+          height='30'
+          alt="identicon"
+          src={`data:image/png;base64,${new Identicon(quiz.author, 30).toString()}`}
+        />
+      </div>
 
-                <div style={hide}>{time = transformDate(quiz.endQuizDate)}
-                </div>
+      <div style={hide}>{time = transformDate(quiz.endQuizDate)}
+      </div>
 
-                <div style={small}>Le questionnaire se termine le {time}</div>
-                <div style={bold}>Question:</div>
+      <div style={small}>Le questionnaire se termine le {time}</div>
+      <div style={bold}>Question:</div>
 
 
-                <div style={question}>{quiz.question}</div>
+      <div style={question}>{quiz.question}</div>
 
-                <div style={hide}>{arrayChoice = mixChoices(quiz.goodChoice, quiz.choice2, quiz.choice3)} </div>
-                <div style={centerButton}>
-                  <button
-                    style={inputChoice}
-                    name={quiz.idQuiz}
-                    onClick={(event) => {
-                    }}
-                  >
-                    {arrayChoice[0]}
-                  </button>
+      <div style={hide}>{arrayChoice = mixChoices(quiz.goodChoice, quiz.choice2, quiz.choice3)} </div>
+      <div style={centerButton}>
+        <button
+          style={inputChoice}
+          name={quiz.idQuiz}
+          onClick={(event) => {
+          }}
+        >
+          {arrayChoice[0]}
+        </button>
 
-                  <button
-                    style={inputChoice}
-                    name={quiz.idQuiz}
-                    onClick={(event) => {
-                    }}
-                  >
-                    {arrayChoice[1]}
-                  </button>
+        <button
+          style={inputChoice}
+          name={quiz.idQuiz}
+          onClick={(event) => {
+          }}
+        >
+          {arrayChoice[1]}
+        </button>
 
-                  <button
-                    style={inputChoice}
-                    name={quiz.idQuiz}
-                    value={arrayChoice[2]}
-                    onClick={(event) => {
-                      let winAmount = window.web3.utils.toWei('0.1', 'Ether');
-                      sendChoice(event.target.name, event.target.value, winAmount);
-                    }}
-                  >
-                    {arrayChoice[2]}
-                  </button>
-                </div>
-              </div>
+        <button
+          style={inputChoice}
+          name={quiz.idQuiz}
+          value={arrayChoice[2]}
+          onClick={(event) => {
+            let winAmount = window.web3.utils.toWei('0.1', 'Ether');
+            sendChoice(event.target.name, event.target.value, winAmount);
+          }}
+        >
+          {arrayChoice[2]}
+        </button>
+      </div>
+    </div>
+  ) : (
+  <div   style={hide}> {passQuiz++}</div>
+  )}
+
+
+</div>
             );
           })}
         </div>
