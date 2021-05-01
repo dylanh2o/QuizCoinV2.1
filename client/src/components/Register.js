@@ -24,11 +24,21 @@ try{
   const form = {
     weight: '100vw',
     height: '100%',
+    marginRight: '20vw',
+    marginLeft: '20vw',
     padding: '20px',
     alignItems: 'center',
 
   };
   const formInput = {
+    width: '50%',
+    padding: '12px 20px',
+    margin: '8px 0',
+    display: 'inline-block',
+    borderWidth: '1px',
+    boxSizing: 'border-box'
+  };
+  const formEmail = {
     width: '100%',
     padding: '12px 20px',
     margin: '8px 0',
@@ -63,8 +73,9 @@ try{
       //onFinishFailed={onFinishFailed}
       style={form}
     >
+      <h2>Inscription</h2>
       <Form.Item
-        label="Name"
+        label="Prenom"
         name="name"
         style={formInput}
       >
@@ -75,7 +86,7 @@ try{
         />
       </Form.Item>
       <Form.Item
-        label="Lastname"
+        label="Nom"
         name="lastname"
         style={formInput}
       >
@@ -88,7 +99,7 @@ try{
       <Form.Item
         label="Email"
         name="email"
-        style={formInput}
+        style={formEmail}
       >
         <Input
           value={email}
@@ -98,7 +109,7 @@ try{
       </Form.Item>
 
       <Form.Item
-        label="Password"
+        label="Mot de passe"
         name="password"
         style={formInput}
       >
@@ -109,7 +120,7 @@ try{
         />
       </Form.Item>
       <Form.Item
-        label="Retype password"
+        label="Retaper le mot de passe"
         name="password2"
         style={formInput}
       >

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Identicon from 'identicon.js';
 import CreateQuiz from './CreateQuiz';
 import {useSelector} from 'react-redux';
-
+import { Alert } from 'antd';
 
 const Main = ({quizzes,createQuiz,sendChoice}) => {
   const dataProfil = useSelector(state => state.app.user);
@@ -48,14 +48,12 @@ let passQuiz=0;
 
     const formQuestion = {
       weight: '100vw',
-      padding: '20px',
+      padding: '10px',
       alignItems: 'center',
       border: 'solid 1px black',
-      margin: '5px',
+      margin: '1vw',
 
     };
-
-
     const hide = {
       display: 'none'
     };
@@ -91,8 +89,15 @@ let passQuiz=0;
     const containerQuestion = {
       display: "flex",
     justifyContent: "center",
-      flexWrap: "wrap"
+      flexWrap: "wrap",
+      marginLeft: '20vw',
+      marginRight: '20vw'
     };
+  const marginTitle = {
+    marginRight: '20vw',
+    marginLeft: '20vw',
+
+  };
     return (
       <div>
 
@@ -106,7 +111,7 @@ let passQuiz=0;
 
 
 
-        <h2>Questionnaire disponible</h2>
+        <h2 style={marginTitle}>Questionnaire disponible</h2>
         <div style={containerQuestion}>
           {quizzes.map((quiz, key) => {
 
@@ -147,7 +152,8 @@ let passQuiz=0;
               sendChoice(event.target.name, event.target.value, winAmount);
             }else{
 
-              alert('faux');
+               <Alert message="Mauvaise réponse" type="error" />;
+            alert("Mauvaise réponse");
             }
 
           }}
@@ -164,8 +170,8 @@ let passQuiz=0;
               let winAmount = window.web3.utils.toWei('0.1', 'Ether');
               sendChoice(event.target.name, event.target.value, winAmount);
             }else{
-              alert('faux');
-
+              <Alert message="Mauvaise réponse" type="error" />;
+              alert("Mauvaise réponse");
             }
           }}
           value={arrayChoice[1]}
@@ -182,7 +188,8 @@ let passQuiz=0;
               let winAmount = window.web3.utils.toWei('0.1', 'Ether');
               sendChoice(event.target.name, event.target.value, winAmount);
             }else{
-              alert('faux');
+              <Alert message="Mauvaise réponse" type="error" />
+              alert("Mauvaise réponse");
             }
           }}
           value={arrayChoice[2]}

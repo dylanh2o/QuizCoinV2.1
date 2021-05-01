@@ -11,6 +11,8 @@ const Login = () => {
   const form = {
     weight: '100vw',
     height: '100%',
+    marginRight: '20vw',
+    marginLeft: '20vw',
     padding: '20px',
     alignItems: 'center',
 
@@ -42,7 +44,9 @@ const Login = () => {
     display: "flex",
     justifyContent: 'center',
     alignItems: 'center'
+
   };
+
 
   const handleSubmit = () => {
 
@@ -55,8 +59,10 @@ const Login = () => {
       //onFinishFailed={onFinishFailed}
       style={form}
     >
+      <h2>Connexion</h2>
+
       <Form.Item
-        label="email"
+        label="Email"
         name="email"
         style={formInput}
 
